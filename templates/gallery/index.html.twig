@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réalisations Manucure{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        {% for image in gallery %}
+            <div class="col-4 my-5 d-flex flex-column justify-content-center align-items-center">
+                <img src="{{ asset(image.url) }}" alt="" width="200px" height="200px">
+                <p>Description de la prestation</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

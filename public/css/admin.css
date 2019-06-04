@@ -1,0 +1,48 @@
+.panel{
+    list-style: none;
+    width: 50%;
+    display: flex;
+    padding: 0;
+    margin: 0 auto;
+    border: 2px solid lightgrey;
+    border-radius: 20px;
+    background-color: #bb4c7b;
+    color: #FFF;
+}
+.panel li{
+    cursor: pointer;
+    font-weight: bolder;
+    padding: 0 25px;
+}
+
+.panel li:hover{
+    background-color: #e85e98;
+}
+
+/* Importer ou mettre dans le général ?*/
+table{
+    width: 100%;
+}
+
+th {
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+}
+
+tr{
+    align-items: center;
+    justify-content: space-between;
+}
+
+td, th {
+    text-align: center;
+}
+
+caption{
+    caption-side: top;
+}
+
+.fa-check-circle{
+    cursor: pointer;
+}

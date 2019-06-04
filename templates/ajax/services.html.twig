@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Duree</th>
+                        <th>Prix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for service in services %}
+                        <tr data-service="{{ service.id }}">
+                            <td>{{ service.name }}</td>
+                            <td>{{ service.description }}</td>
+                            <td>{{ service.duration | date('H:i:s') }}</td>
+                            <td>{{ service.price }}€</td>
+                            <td>
+                                <i class="fas fa-pen-fancy pink serviceUpdate" data-service="{{ service.id }}" data-action="update"></i>
+                            </td>
+                            <td>
+                                <i class="fas fa-trash-alt pink serviceDelete" data-service="{{ service.id }}"></i>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div id="addRow"></div>
+            <button class="btn button-pink mt-3" id="addButton">Ajouter +</button>
+            <div id="updateRow"></div>
+        </div>
+    </div>
+</div>

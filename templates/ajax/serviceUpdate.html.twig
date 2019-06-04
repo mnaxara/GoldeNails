@@ -1,0 +1,22 @@
+<h3 class="mt-3">{{ action }} d'un service :</h3>
+<div class="w-75 m-auto">
+    {{ form_start(form, {'attr': {'id': 'upForm'}}) }}
+    {#<input type="text" name="name" id="name" value="{{ service.name }}">#}
+    {{ form_row(form.name)}}
+    {{ form_row(form.shortName)}}
+    {{ form_row(form.description)}}
+    {{ form_row(form.duration)}}
+    {{ form_row(form.price)}}
+    {% if service is defined %}
+    <button class="btn pink serviceUpdate" data-action="valid" data-service="{{ service.id }}">
+        <i class="far fa-check-circle fa-2x"></i>
+    </button>
+    {% else %}
+    <button class="btn pink" data-action="valid" id="serviceAdd">
+        <i class="far fa-check-circle fa-2x"></i>
+    </button>
+    {% endif %}
+    {{ form_end(form) }}
+</div>
+
+

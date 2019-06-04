@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RoxyNails{% endblock %}
+
+{% block body %}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-interval="3000">
+                            <img src="{{ asset('uploads/images/img3.jpg') }}" class="d-block w-75 m-auto" alt="...">
+                        </div>
+                        <div class="carousel-item" data-interval="3000">
+                            <img src="{{ asset('uploads/images/img16.jpg') }}" class="d-block w-75 m-auto" alt="...">
+                        </div>
+                        <div class="carousel-item" data-interval="3000">
+                            <img src="{{ asset('uploads/images/img6.jpg') }}" class="d-block w-75 m-auto" alt="...">
+                        </div>
+                        <div class="carousel-item" data-interval="3000">
+                            <img src="{{ asset('uploads/images/img1.jpg') }}" class="d-block w-75 m-auto" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center">Présentation</h2>
+            </div>
+        </div>
+        <div class="row load-hidden" id="presentation">
+            <div class="col-12 col-md-5 d-flex flex-column justify-content-center">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <img src="{{ asset('uploads/images/roxy.jpg') }}" alt="" id="roxy">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 p-4">
+                        <p><i>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium autem blanditiis
+                            dignissimos, dolor dolorem eveniet nemo provident sapiente similique"</i></p>
+                        <div class="d-flex justify-content-center">
+                            <i class="fab fa-facebook-square fa-2x mx-2"></i>
+                            <i class="fab fa-twitter-square fa-2x mx-2"></i>
+                            <i class="fab fa-instagram fa-2x mx-2"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-7 d-flex flex-column justify-content-center">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium autem blanditiis
+                    dignissimos, dolor dolorem eveniet nemo provident sapiente similique? Aspernatur dolorem error
+                    incidunt officia porro, quaerat quos repudiandae voluptate.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium autem blanditiis
+                    dignissimos, dolor dolorem eveniet nemo provident sapiente similique? Aspernatur dolorem error
+                    incidunt officia porro, quaerat quos repudiandae voluptate.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium autem blanditiis
+                    dignissimos, dolor dolorem eveniet nemo provident sapiente similique? Aspernatur dolorem error
+                    incidunt officia porro, quaerat quos repudiandae voluptate.</p>
+                <div class="d-flex justify-content-center">
+                    <a href="{{ path('gallery') }}"><button class="mx-2 button-pink">Voir mes réalisations</button></a>
+                    <a href="{{ path('prestation') }}"><button class="mx-2 button-pink">Voir mes prestations</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        let slideRight = {
+            distance: '150%',
+            origin: 'left',
+            opacity: null,
+            delay: 500
+        };
+
+        ScrollReveal().reveal('#presentation', slideRight);
+    </script>
+{% endblock %}

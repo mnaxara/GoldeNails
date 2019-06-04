@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zone de déplacement Bordeaux{% endblock %}
+
+{% block body %}
+<style>
+    #map{
+        width: 650px;
+        height: 650px;
+        margin: 0 auto;
+        border: 2px solid #BB4C7B;
+        /*border-radius: 50%;*/
+    }
+</style>
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    $(function() {
+
+        $('body').append('<div id="map"></div>');
+
+        let osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            osmAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            osm = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib});
+
+        let map = L.map('map').setView([44.819755, -0.613411], 11).addLayer(osm);
+
+        let polygon = L.polygon([
+            [44.897563, -0.723101],
+            [44.926048, -0.471876],
+            [44.822502, -0.436736],
+            [44.714414, -0.553179],
+            [44.741594, -0.685326],
+            [44.814063, -0.791167],
+        ]).addTo(map);
+
+
+        // var myIcon = L.icon({// Icone personalisé des marqueurs
+        //     iconUrl: 'https://pbs.twimg.com/profile_images/378800000788651484/f88d369fae8534684106933ddb729bc5_400x400.png
+        //     https://pbs.twimg.com/profile_images/378800000788651484/f88d369fae8534684106933ddb729bc5_400x400.png
+        //         ',
+        //     iconSize: [38, 95],
+        //     iconAnchor: [22, 94],
+        //     popupAnchor: [-3, -76],
+        //     shadowUrl: 'my-icon-shadow.png',
+        //     shadowSize: [68, 95],
+        //     shadowAnchor: [22, 94]
+        // });
+
+// Emplacement de chaque marqueur
+//         let marker = L.marker([44.84241, -0.58295].addTo(map);
+//         // let marker = L.marker([44.84241, -0.58295] ,{icon: myIcon}).addTo(map); Avec icone perso
+//         let marker2 = L.marker([44.84074, -0.58103]).addTo(map);
+//         let marker3 = L.marker([44.84102, -0.58188]).addTo(map);
+//
+//         marker.addEventListener('mouseover', function () {
+//             marker.bindPopup("<b>WEBFORCE</b>").openPopup()
+//         });
+//
+//         marker.addEventListener('mouseout', function () {
+//             marker.closePopup()
+//         });
+//
+//         marker2.on('mouseover', function () {
+//             marker2.bindPopup("Arret de bus !").openPopup()
+//         });
+//         marker2.on('mouseout', function () {
+//             marker2.closePopup()
+//         });
+//
+//         marker3.on('mouseover', function () {
+//             marker3.bindPopup("TACOS !!!").openPopup()
+//         });
+//         marker3.on('mouseout', function () {
+//             marker3.closePopup()
+//         });
+
+
+    })();
+</script>
+{% endblock %}

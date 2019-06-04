@@ -1,0 +1,27 @@
+<div class="row mb-4">
+    <div class="col-12 d-flex justify-content-center align-items-center">
+        <i class="fas fa-arrow-left mr-4" id="monthDown"></i> <h1 class="text-center">{{ month.name }}</h1> <i class="fas fa-arrow-right ml-4" id="monthUp"></i>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="calendar">
+            {% for day in data %}
+                {% set row = (day.dayNumber / 7)|round(0, 'ceil') %}
+                {% set col = day.dayNumber - (7*(row-1)) %}
+                {% set name = day.day %}
+                <div class="day {% if day.day == "Dimanche" %}off{% endif %}" style="grid-row: {{ row }}; grid-column: {{ col }}" data-date="{{ monthNumber~'-'~day.dayNumber }}">
+                    <p class="text-center">{{day.day~' '~day.dayNumber}}</p>
+                    {% if (day.day != "Dimanche" and day.dayNumber > today and todayM == monthNumber) or (day.day != "Dimanche" and todayM < monthNumber) %}
+                        <div class="rdv {% if day.dayNumber~monthNumber~9 in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}9" data-hour="9" data-toggle="modal" data-target="#reservations">9h00</div>
+                        <div class="rdv {% if day.dayNumber~monthNumber~11 in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}11" data-hour="11" data-toggle="modal" data-target="#reservations">11h00</div>
+                        <div class="rdv {% if day.dayNumber~monthNumber~13 in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}13" data-hour="13" data-toggle="modal" data-target="#reservations">13h00</div>
+                        <div class="rdv {% if day.dayNumber~monthNumber~15 in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}15" data-hour="15" data-toggle="modal" data-target="#reservations">15h00</div>
+                        <div class="rdv {% if day.dayNumber~monthNumber~17 in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}17" data-hour="17" data-toggle="modal" data-target="#reservations">17h00</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+

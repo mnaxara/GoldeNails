@@ -1,0 +1,58 @@
+<div class="container mt-5" id="calendar">
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <h1 class="text-center">{{ month.name }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="calendar">
+                {% for day in data %}
+                    {% set row = (day.dayNumber / 7)|round(0, 'ceil') %}
+                    {% set col = day.dayNumber - (7*(row-1)) %}
+                    {% set name = day.day %}
+                    <div class="
+                            day
+                            {% if day.day == "Dimanche" %}off{% endif %}
+                         "
+                         style="grid-row: {{ row }}; grid-column: {{ col }}"
+                         data-date="{{ monthNumber~'-'~day.dayNumber }}"
+                    >
+                        <p class="text-center">{{ day.day~' '~day.dayNumber }}</p>
+                        {% if day.day != "Dimanche" %}
+                            <div class="rdv {% if day.dayNumber~monthNumber~9 not in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}9" data-hour="9">9h00</div>
+                            <div class="rdv {% if day.dayNumber~monthNumber~11 not in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}11" data-hour="11">11h00</div>
+                            <div class="rdv {% if day.dayNumber~monthNumber~13 not in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}13" data-hour="13">13h00</div>
+                            <div class="rdv {% if day.dayNumber~monthNumber~15 not in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}15" data-hour="15">15h00</div>
+                            <div class="rdv {% if day.dayNumber~monthNumber~17 not in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}17" data-hour="17">17h00</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-12 my-3">
+            <h2>Rendez vous à valider : </h2>
+        </div>
+        <div class="row">
+            {% for rdv in submitRdvs %}
+                <div class="col-3">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ rdv.date }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ rdv.user.name }} à {{ rdv.adress }}</h6>
+                            <ul>
+                                {% for service in rdv.services %}
+                                    <li>{{ service.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="d-flex justify-content-around justify-self-end mb-2">
+                            <i class="fas fa-check text-success buttonsRdv" data-type="valid" data-id="{{ rdv.id }}"></i>
+                            <i class="fas fa-times text-danger buttonsRdv" data-type="cancel" data-id="{{ rdv.id }}"></i>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

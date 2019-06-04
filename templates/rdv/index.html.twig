@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prendre rendez-vous{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/rdv.css') }}">
+{% endblock %}
+
+{% block body %}
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="text-center alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+<div class="container" id="calendar">
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <i class="fas fa-arrow-left mr-4" id="monthDown"></i> <h1 class="text-center">{{ month.name }}</h1> <i class="fas fa-arrow-right ml-4" id="monthUp"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="calendar">
+                {% for day in data %}
+                    {% set row = (day.dayNumber / 7)|round(0, 'ceil') %}
+                    {% set col = day.dayNumber - (7*(row-1)) %}
+                    {% set name = day.day %}
+                    <div class="day {% if day.day == "Dimanche" %}off{% endif %}" style="grid-row: {{ row }}; grid-column: {{ col }}" data-date="{{ monthNumber~'-'~day.dayNumber }}">
+                        <p class="text-center">{{ day.day~' '~day.dayNumber }}</p>
+                        {% if day.day != "Dimanche" and day.dayNumber > today %}
+                            <div class="rdv {% if day.dayNumber~monthNumber~9 in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}9" data-hour="9" data-toggle="modal" data-target="#reservations">9h00</div>
+                            <div class="rdv {% if day.dayNumber~monthNumber~11 in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}11" data-hour="11" data-toggle="modal" data-target="#reservations">11h00</div>
+                            <div class="rdv {% if day.dayNumber~monthNumber~13 in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}13" data-hour="13" data-toggle="modal" data-target="#reservations">13h00</div>
+                            <div class="rdv {% if day.dayNumber~monthNumber~15 in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}15" data-hour="15" data-toggle="modal" data-target="#reservations">15h00</div>
+                            <div class="rdv {% if day.dayNumber~monthNumber~17 in takenRdv %}unavaible{% endif %}" data-code="{{ day.dayNumber~monthNumber }}17" data-hour="17" data-toggle="modal" data-target="#reservations">17h00</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{#Modal de prise de rdv#}
+<div class="modal fade" id="reservations" tabindex="-1" role="dialog" aria-labelledby="reservationsTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reservationsTitle">Réserver</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" id="inscription" class="p-4">
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label">Nom</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" readonly required value="{{ app.user.name }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="firstname" class="col-sm-2 col-form-label">Prénom</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="firstname" name="firstname" readonly required value="{{app.user.firstname}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="adress" class="col-sm-2 col-form-label">Adresse</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="adress" name="adress" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="date" class="col-sm-2 col-form-label">Date</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="date" name="date" value="" readonly required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <input type="hidden" class="form-control" id="code" name="code" value="">
+                        </div>
+                    </div>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend>Services souhaités</legend>
+                            <div class="col-sm-10">
+                                {% for service in services %}
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="{{ service.shortName}}" name="services[]" value="{{ service.shortName}}" data-price="{{ service.price}}">
+                                        <label class="form-check-label" for="{{ service.shortName}}">
+                                            {{ service.name }} ({{ service.price}}€)
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button class="button-pink" type="submit" id="reservate" disabled>Réserver (prix total : <span id="pricetotal">-</span> €)</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        let year = {{ year }};
+        let monthNumberDown = {{ monthNumber - 1}};
+        let monthNumberUp = {{ monthNumber + 1}};
+        let calendar = document.querySelector('#calendar');
+        let path = '{{ path('monthAjax')}}'
+    </script>
+    <script src="{{ asset('js/rdv.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administrateur{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/rdv.css') }}">
+{% endblock %}
+
+{% block body %}
+    <main class="main">
+        <h1 class="text-center py-3">Panel administratif</h1>
+
+        <ul class="panel justify-content-around">
+            <li id="agenda" class="py-3">Agenda</li>
+            <li id="service" class="py-3">Services</li>
+            <li id="gallery" class="py-3">Gallerie</li>
+            <li id="general" class="py-3">Admin. général</li>
+        </ul>
+
+        <div id="main-change d-flex justify-content-center">
+            <div id="result">
+                {#GENERE#}
+            </div>
+        </div>
+        <div id="modal">
+        </div>
+
+    </main>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        let agendaPath = '{{ path('agendaAjax') }}';
+        let rdvPath = '{{ path('rdvAjax') }}';
+        let servicePath = '{{ path('serviceAjax') }}';
+        let serviceUpdateAjaxPath = '{{ path('serviceUpdateAjax', {id:0})}}';
+        let deleteServicePath = '{{ path('serviceDeleteAjax', {id:0})}}';
+        let addServicePath = '{{ path('serviceAddAjax')}}';
+    </script>
+    <script src="{{ asset('js/admin.js') }}"></script>
+{% endblock %}

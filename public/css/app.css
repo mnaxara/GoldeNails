@@ -1,0 +1,118 @@
+html.sr .load-hidden {
+    visibility: hidden;
+}
+
+body{
+    background-color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+nav li{
+    margin: 0 8px;
+}
+
+a{
+    /*Pour survol possible aprés appartion latérale js*/
+    z-index: 20;
+}
+
+/*Color*/
+
+.pink{
+    color: #bb4c7b;
+}
+
+/**/
+
+.navbar-perso a, #mailUser{
+    color: #bb4c7b;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+}
+
+#mailUser{
+    font-size: 18px;
+}
+
+.navbar-perso a:hover{
+    text-shadow: 5px 5px 1px #bf578259
+}
+
+#logo{
+    width: 20%;
+    height: 20%;
+}
+
+#logo img {
+    width: 100%;
+    height: 100%;
+}
+
+#imgfixed{
+    height: 80vh;
+    box-sizing: border-box;
+    background-image: url("../uploads/images/fluid.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-size: 4vw;
+}
+
+.carousel-item img{
+    width: 20%;
+    height: 20%;
+}
+
+#roxy{
+    width: 200px;
+    border-radius: 10px;
+}
+
+.button-pink{
+    background-color: #ffffff;
+    border: 2px solid #bf5782;
+    border-radius: 10px;
+    padding: 0.75rem;
+    color: #bf5782;
+    font-weight: bold;
+    box-shadow: 4px 4px 2px 0px #d8c0cb;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgba(191, 87, 130, 0.37);
+}
+
+.fa-facebook-square{
+    color: #3B5CA0;
+    cursor: pointer;
+}
+.fa-twitter-square{
+    color: #1DA1F2;
+    cursor: pointer;
+}
+.fa-instagram{
+    color: #BA2498;
+    cursor: pointer;
+}
+
+.card {
+    height: 250px;
+}
+
+.fas {
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+@media screen and (min-width: 1910px) {
+    .container {
+        max-width: 1440px;
+    }
+
+    .navbar a{
+        font-size: 28px;
+    }
+}
