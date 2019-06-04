@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1440b8fe-8faa-4dfb-9276-f103ee812395" name="Default Changelist" comment="" />
+    <list default="true" id="1440b8fe-8faa-4dfb-9276-f103ee812395" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/admin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="154" column="16" selection-start-line="154" selection-start-column="16" selection-end-line="155" selection-end-column="62" />
+            <state relative-caret-position="517">
+              <caret line="167" column="35" selection-start-line="167" selection-start-column="35" selection-end-line="167" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -85,7 +87,7 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/RoxyNails" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -262,7 +264,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -284,6 +285,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -384,11 +386,12 @@
       <workItem from="1558385176958" duration="635000" />
       <workItem from="1558706408391" duration="646000" />
       <workItem from="1559667644549" duration="438000" />
+      <workItem from="1559668935762" duration="275000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188122000" />
+    <option name="totallyTimeSpent" value="188397000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -402,7 +405,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22867803" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23134328" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -668,11 +671,7 @@
     <entry file="file://$PROJECT_DIR$/src/Controller/GalleryController.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/config/FileLocator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1323" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/config/FileLocator.php" />
     <entry file="file://$PROJECT_DIR$/bin/console">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
@@ -752,8 +751,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/admin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="154" column="16" selection-start-line="154" selection-start-column="16" selection-end-line="155" selection-end-column="62" />
+        <state relative-caret-position="517">
+          <caret line="167" column="35" selection-start-line="167" selection-start-column="35" selection-end-line="167" selection-end-column="35" />
         </state>
       </provider>
     </entry>
