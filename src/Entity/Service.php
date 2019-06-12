@@ -40,11 +40,6 @@ class Service
     private $price;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Prestation", inversedBy="services")
-     */
-    private $prestations;
-
-    /**
      * @ORM\Column(type="string", length=30)
      * @Assert\NotBlank
      */
@@ -104,32 +99,6 @@ class Service
     public function setPrice(float $price): self
     {
         $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Prestation[]
-     */
-    public function getPrestations(): Collection
-    {
-        return $this->prestations;
-    }
-
-    public function addPrestation(Prestation $prestation): self
-    {
-        if (!$this->prestations->contains($prestation)) {
-            $this->prestations[] = $prestation;
-        }
-
-        return $this;
-    }
-
-    public function removePrestation(Prestation $prestation): self
-    {
-        if ($this->prestations->contains($prestation)) {
-            $this->prestations->removeElement($prestation);
-        }
 
         return $this;
     }

@@ -174,7 +174,7 @@ function serviceUpdate() {
         });
     });
 
-    // Fonction apparition Ajout Service et genstion de l'ajout
+    // Fonction apparition Ajout Service et gestion de l'ajout
 
     let addButton = document.querySelector('#addButton');
 

@@ -24,11 +24,6 @@ class Rendezvous
     private $date;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Prestation", inversedBy="rendezvous")
-     */
-    private $prestations;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Service", inversedBy="rendezvous")
      */
     private $services;
@@ -77,32 +72,6 @@ class Rendezvous
     public function setDate(string $date): self
     {
         $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Prestation[]
-     */
-    public function getPrestations(): Collection
-    {
-        return $this->prestations;
-    }
-
-    public function addPrestation(Prestation $prestation): self
-    {
-        if (!$this->prestations->contains($prestation)) {
-            $this->prestations[] = $prestation;
-        }
-
-        return $this;
-    }
-
-    public function removePrestation(Prestation $prestation): self
-    {
-        if ($this->prestations->contains($prestation)) {
-            $this->prestations->removeElement($prestation);
-        }
 
         return $this;
     }

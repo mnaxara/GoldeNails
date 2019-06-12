@@ -38,11 +38,6 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Prestation", mappedBy="user", orphanRemoval=true)
-     */
-    private $prestations;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Rendezvous", mappedBy="user")
      */
     private $rendezvous;
@@ -139,37 +134,6 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    /**
-     * @return Collection|Prestation[]
-     */
-    public function getPrestations(): Collection
-    {
-        return $this->prestations;
-    }
-
-    public function addPrestation(Prestation $prestation): self
-    {
-        if (!$this->prestations->contains($prestation)) {
-            $this->prestations[] = $prestation;
-            $prestation->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removePrestation(Prestation $prestation): self
-    {
-        if ($this->prestations->contains($prestation)) {
-            $this->prestations->removeElement($prestation);
-            // set the owning side to null (unless already changed)
-            if ($prestation->getUser() === $this) {
-                $prestation->setUser(null);
-            }
-        }
-
-        return $this;
     }
 
     /**
