@@ -19,6 +19,7 @@ class RdvController extends AbstractController
         $this->em = $em;
     }
 
+    #Fonction de création d'un rendez vous demandé sur la page de prise de rendez vous
     private function saveRdv(Request $request){
         $servicesRep = $this->em->getRepository(Service::class);
         $post = $request->request->all();
@@ -83,19 +84,23 @@ class RdvController extends AbstractController
         $servicesRep = $this->em->getRepository(Service::class);
         $rdvRep = $this->em->getRepository(Rendezvous::class);
 
+
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        // Appel fontion sauvegarde si il y a une requete
+        // Appel fonction sauvegarde si il y a une requete
         if ($request->request->all()){
             $this->saveRdv($request);
         }
 
-        $Month = new Month(new \DateTime('now'));
+        /* Récupération du Jour et Mois en cours (en lettre et en chiffre)
+         * Récupération des horaires deja réservé
+         */
+        $today = new \DateTime('now');
+        $Month = new Month($today);
         $data = $Month->getMonthData();
         $month = $Month->getMonthName();
-        $monthNumber = (new \DateTime('now'))->format('m');
-        $today = new \DateTime('now');
-        $today = intval($today->format('d'));
+        $monthNumber = ($today)->format('m');
+        $todayDay = intval($today->format('d'));
         $year = $Month->getYear();
         $takenReqs = $rdvRep->getRdvByMonth($monthNumber, true);
         $takenRdv = [];
@@ -112,7 +117,7 @@ class RdvController extends AbstractController
             'year' => $year,
             'services' => $services,
             'takenRdv' => $takenRdv,
-            'today' => $today,
+            'today' => $todayDay,
         ]);
     }
 }

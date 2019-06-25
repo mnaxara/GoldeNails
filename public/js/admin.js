@@ -200,24 +200,25 @@ function serviceUpdate() {
 
     let serviceAdd = document.querySelector('#serviceAdd');
 
-    serviceAdd.addEventListener('click', async function (e) {
-        e.preventDefault();
+    serviceAdd.addEventListener('click',
+        async function (e) {
+                e.preventDefault();
 
-        let form = document.getElementById('upForm');
-        let formData = new FormData(form);
-        // let param = `action=${action}&form=${formdata}`;
-        let response = await fetch(addServicePath , {
-            method: 'POST',
-            body: formData
-        });
+                let form = document.getElementById('upForm');
+                let formData = new FormData(form);
+                // let param = `action=${action}&form=${formdata}`;
+                let response = await fetch(addServicePath , {
+                    method: 'POST',
+                    body: formData
+                });
 
-        if (response.ok === false){
-            console.log('erreur');
-        }
-        else{
-            serviceList();
-        }
+                if (response.ok === false){
+                    console.log('erreur');
+                }
+                else{
+                    serviceList();
+                }
 
 
-    })
+            })
 }
