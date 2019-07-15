@@ -21,14 +21,14 @@
                                 <i class="fas fa-pen-fancy pink serviceUpdate" data-service="{{ service.id }}" data-action="update"></i>
                             </td>
                             <td>
-                                <i class="fas fa-trash-alt pink serviceDelete" data-service="{{ service.id }}"></i>
+                                <i class="fas fa-trash-alt pink serviceUpdate" data-service="{{ service.id }}" data-action="delete"></i>
                             </td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
             <div id="addRow"></div>
-            <button class="btn button-pink mt-3" id="addButton">Ajouter +</button>
+            <button class="btn button-pink mt-3 serviceUpdate" data-action="addShow">Ajouter +</button>
             <div id="updateRow"></div>
         </div>
     </div>
