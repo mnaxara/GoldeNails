@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Rendezvous;
 use App\Entity\Service;
-use App\Repository\RendezvousRepository;
+use App\Service\AddTime;
 use App\Service\Month;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,7 +38,7 @@ class RdvController extends AbstractController
             $rdv = New Rendezvous();
             $user = $this->getUser();
             $date = $post['date'];
-            $duration = date('00:00:00');
+            $duration = new \DateTime('1970-01-01 00:00:00');
             $code = $post['code'];
             $adress = strip_tags($post['adress']);
 
@@ -46,22 +46,12 @@ class RdvController extends AbstractController
             foreach ($services as $service) {
                 $serviceFound = $servicesRep->findOneByShortName($service);
                 $time = $serviceFound->getDuration();
-                $time = $time->format('H:i:s');
-
-                $duration = explode(':', $duration);
-                $time = explode(':', $time);
-
-                $h = $duration[0] + $time[0];
-                $m = $duration[1] + $time[1];
-                $s = $duration[2] + $time[2];
-
-                $duration = date($h.':'.$m.':'.$s);
+                $addT = new AddTime();
+                $add = $addT->addtime($duration, $time);
+                $duration = new \DateTime('1970-01-01 '.$add);
                 $rdv->addService($serviceFound);
 
             }
-
-            $duration = new \DateTime($duration);
-
             $rdv->setUser($user);
             $rdv->setDateCode($code);
             $rdv->setDate($date);

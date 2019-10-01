@@ -3,7 +3,7 @@ namespace App\Service;
 
 class Month{
 
-    public $days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+    private $days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
 
     private $months = [
         1 => ['name' =>'Janvier'],

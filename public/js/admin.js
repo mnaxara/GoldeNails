@@ -107,6 +107,7 @@ function serviceUpdate() {
                 let param = `action=${action}`;
                 let regex = /\/\d*$/;
 
+
                 switch (action) {
                     case 'update' :
                         serviceUpdateAjaxPath = serviceUpdateAjaxPath.replace(regex, '/' + id);
