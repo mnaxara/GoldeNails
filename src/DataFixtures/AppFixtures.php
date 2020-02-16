@@ -14,7 +14,7 @@ class AppFixtures extends Fixture
 
         for ($i = 1; $i < 19; $i++){
             $image = new Gallery();
-            $image->setUrl('uploads/images/img'.$i.'.jpg');
+            $image->setUrl("uploads/images/img$i.jpg");
             $manager->persist($image);
         }
 
